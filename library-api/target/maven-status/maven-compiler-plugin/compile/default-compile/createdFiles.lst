@@ -1,0 +1,9 @@
+com/kutuphane/libraryapi/service/BookService.class
+com/kutuphane/libraryapi/LibraryApiApplication.class
+com/kutuphane/libraryapi/exception/GlobalExceptionHandler.class
+com/kutuphane/libraryapi/model/Book.class
+com/kutuphane/libraryapi/repository/BookRepository.class
+com/kutuphane/libraryapi/service/BookServiceImpl.class
+com/kutuphane/libraryapi/exception/ResourceNotFoundException.class
+com/kutuphane/libraryapi/controller/BookController.class
+com/kutuphane/libraryapi/exception/ErrorDetails.class
