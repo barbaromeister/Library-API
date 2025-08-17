@@ -1,0 +1,7 @@
+target/
+!target/library-api-0.0.1-SNAPSHOT.jar
+.mvn/wrapper/maven-wrapper.jar
+.git
+.gitignore
+README.md
+.DS_Store
