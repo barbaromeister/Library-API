@@ -25,7 +25,7 @@ services:
       SPRING_DATASOURCE_USERNAME: admin
       SPRING_DATASOURCE_PASSWORD: 123456
     ports:
-      - "8080:8080"
+      - "3000:8080"
     networks:
       - library-network
 

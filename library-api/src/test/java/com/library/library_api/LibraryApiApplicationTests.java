@@ -1,4 +1,4 @@
-package com.kutuphane.libraryapi;
+package com.library.library_api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
