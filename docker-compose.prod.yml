@@ -1,0 +1,217 @@
+# Production Docker Compose Configuration
+# This file provides production-ready settings for the Library Management System
+# 
+# Usage:
+#   docker-compose -f library-api/docker-compose.yml -f docker-compose.prod.yml up -d
+#
+# Make sure to:
+# 1. Configure environment variables in .env.production
+# 2. Change default passwords
+# 3. Set up proper SSL certificates
+# 4. Configure firewall rules
+
+version: '3.8'
+
+services:
+  postgres:
+    # Production database configuration
+    restart: always
+    command: >
+      postgres
+      -c max_connections=200
+      -c shared_preload_libraries=pg_stat_statements
+      -c pg_stat_statements.track=all
+      -c log_statement=all
+      -c log_min_duration_statement=1000
+      -c log_line_prefix='%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '
+    environment:
+      # Override with production values
+      - POSTGRES_DB=${DB_NAME:-kutuphane}
+      - POSTGRES_USER=${DB_USERNAME:-library_admin}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-CHANGE_THIS_PASSWORD}
+      # Performance tuning
+      - POSTGRES_SHARED_PRELOAD_LIBRARIES=pg_stat_statements
+      - POSTGRES_MAX_CONNECTIONS=200
+    volumes:
+      # Production data volume
+      - postgres_prod_data:/var/lib/postgresql/data
+      # Backup directory
+      - ./deploy/backups:/backups
+      # Database initialization
+      - ./deploy/scripts/init-database.sql:/docker-entrypoint-initdb.d/init-database.sql:ro
+      # PostgreSQL configuration
+      - ./deploy/config/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+    ports:
+      - "${DB_EXTERNAL_PORT:-5433}:5432"
+    networks:
+      - library-prod-network
+    # Health check
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-library_admin} -d ${DB_NAME:-kutuphane}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+
+  library-api:
+    # Production application configuration
+    restart: always
+    environment:
+      # Spring Boot production profile
+      - SPRING_PROFILES_ACTIVE=production
+      
+      # Database connection with production settings
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${DB_NAME:-kutuphane}
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME:-library_admin}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD:-CHANGE_THIS_PASSWORD}
+      
+      # JPA/Hibernate production settings
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+      - SPRING_JPA_SHOW_SQL=false
+      - SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE=25
+      - SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_INSERTS=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_UPDATES=true
+      
+      # Connection pool settings
+      - SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE=50
+      - SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE=10
+      - SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT=60000
+      - SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT=600000
+      - SPRING_DATASOURCE_HIKARI_MAX_LIFETIME=1800000
+      
+      # Security settings
+      - SPRING_SECURITY_REQUIRE_SSL=${SSL_ENABLED:-false}
+      - SERVER_SSL_ENABLED=${SSL_ENABLED:-false}
+      
+      # Logging configuration
+      - LOGGING_LEVEL_ROOT=WARN
+      - LOGGING_LEVEL_COM_KUTUPHANE=INFO
+      - LOGGING_FILE_NAME=/app/logs/library-management.log
+      - LOGGING_PATTERN_FILE=%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+      
+      # Actuator settings (restricted for production)
+      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,metrics
+      - MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS=when_authorized
+      - MANAGEMENT_SERVER_PORT=8081
+      
+      # CORS settings (restrictive for production)
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-https://yourdomain.com}
+      
+      # JVM settings for production
+      - JAVA_OPTS=-Xmx1g -Xms512m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/app/logs/ -Djava.security.egd=file:/dev/./urandom
+      
+      # Application settings
+      - SERVER_PORT=8080
+      - SERVER_COMPRESSION_ENABLED=true
+      - SERVER_COMPRESSION_MIME_TYPES=text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+      - SERVER_HTTP2_ENABLED=true
+      
+      # Timezone
+      - TZ=UTC
+    
+    ports:
+      - "${APP_PORT:-3000}:8080"
+      - "8081:8081"  # Actuator port
+    
+    volumes:
+      # Application logs
+      - ./logs:/app/logs
+      # Configuration files
+      - ./deploy/config/application-production.properties:/app/config/application-production.properties:ro
+    
+    networks:
+      - library-prod-network
+    
+    depends_on:
+      postgres:
+        condition: service_healthy
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 1.5G
+          cpus: '2.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+    
+    # Security settings
+    security_opt:
+      - no-new-privileges:true
+    
+    # User settings (run as non-root)
+    user: "1000:1000"
+
+  # Optional: Nginx reverse proxy for production
+  nginx:
+    image: nginx:alpine
+    container_name: library-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Nginx configuration
+      - ./deploy/config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./deploy/config/nginx-default.conf:/etc/nginx/conf.d/default.conf:ro
+      # SSL certificates (if using HTTPS)
+      - ./deploy/ssl:/etc/ssl/certs:ro
+      # Static files (optional optimization)
+      - ./library-api/src/main/resources/static:/var/www/html:ro
+    networks:
+      - library-prod-network
+    depends_on:
+      - library-api
+    # Uncomment if you want to use nginx
+    profiles:
+      - nginx
+
+  # Optional: Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: library-redis
+    restart: always
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis_password}
+    volumes:
+      - redis_data:/data
+    networks:
+      - library-prod-network
+    # Uncomment if you want to use Redis
+    profiles:
+      - redis
+
+volumes:
+  postgres_prod_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/postgres
+  
+  redis_data:
+    driver: local
+
+networks:
+  library-prod-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
