@@ -15,16 +15,39 @@
                     <i class="fas fa-book"></i>
                     <h1>Library Manager</h1>
                 </div>
+                <div class="header-actions" id="headerActions">
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <span id="welcomeText"></span>
+                        <button class="btn btn-secondary" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                    <div class="auth-buttons" id="authButtons">
+                        <button class="btn btn-outline" id="loginBtn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </button>
+                        <button class="btn btn-primary" id="registerBtn">
+                            <i class="fas fa-user-plus"></i>
+                            Register
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="mainContent">
+            <!-- Book Management Controls -->
+            <div class="content-controls" id="contentControls" style="display: none;">
                 <button class="add-book-btn" id="addBookBtn">
                     <i class="fas fa-plus"></i>
                     Add New Book
                 </button>
             </div>
-        </header>
 
-        <main>
             <!-- Search Section -->
-            <section class="search-section">
+            <section class="search-section" id="searchSection" style="display: none;">
                 <div class="search-container">
                     <div class="search-input-group">
                         <i class="fas fa-search"></i>
@@ -42,7 +65,7 @@
             </section>
 
             <!-- Statistics Section -->
-            <section class="stats-section">
+            <section class="stats-section" id="statsSection" style="display: none;">
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon">
@@ -75,7 +98,7 @@
             </section>
 
             <!-- Books Section -->
-            <section class="books-section">
+            <section class="books-section" id="booksSection" style="display: none;">
                 <div class="section-header">
                     <h2>Books Collection</h2>
                     <div class="view-toggle">
@@ -96,6 +119,62 @@
                 </div>
             </section>
         </main>
+
+        <!-- Login Modal -->
+        <div class="modal" id="loginModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Login</h2>
+                    <button class="close-btn" id="closeLoginModal">&times;</button>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginUsername">Username</label>
+                        <input type="text" id="loginUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" name="password" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelLoginBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="submitLoginBtn">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div class="modal" id="registerModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Register</h2>
+                    <button class="close-btn" id="closeRegisterModal">&times;</button>
+                </div>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerUsername">Username</label>
+                        <input type="text" id="registerUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelRegisterBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="submitRegisterBtn">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <!-- Add/Edit Book Modal -->
         <div class="modal" id="bookModal">

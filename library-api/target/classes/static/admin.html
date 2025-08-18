@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Library Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>Admin Dashboard</h1>
+                </div>
+                <div class="admin-actions">
+                    <span id="adminWelcome">Welcome, Admin</span>
+                    <button class="btn btn-secondary" id="backToLibrary">
+                        <i class="fas fa-book"></i>
+                        Library
+                    </button>
+                    <button class="btn btn-secondary" id="adminLogout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="admin-nav">
+            <div class="nav-container">
+                <button class="nav-btn active" data-tab="users">
+                    <i class="fas fa-users"></i>
+                    Users
+                </button>
+                <button class="nav-btn" data-tab="books">
+                    <i class="fas fa-book"></i>
+                    Books
+                </button>
+                <button class="nav-btn" data-tab="stats">
+                    <i class="fas fa-chart-bar"></i>
+                    Statistics
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Users Tab -->
+            <div class="tab-content active" id="users-tab">
+                <div class="section-header">
+                    <h2>User Management</h2>
+                    <button class="btn btn-primary" id="refreshUsers">
+                        <i class="fas fa-refresh"></i>
+                        Refresh
+                    </button>
+                </div>
+                
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <tr>
+                                <td colspan="6" class="loading-cell">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    Loading users...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Books Tab -->
+            <div class="tab-content" id="books-tab">
+                <div class="section-header">
+                    <h2>Book Management</h2>
+                    <button class="btn btn-primary" id="refreshBooks">
+                        <i class="fas fa-refresh"></i>
+                        Refresh
+                    </button>
+                </div>
+                
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>ISBN</th>
+                                <th>Pages</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="booksTableBody">
+                            <tr>
+                                <td colspan="6" class="loading-cell">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    Loading books...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Statistics Tab -->
+            <div class="tab-content" id="stats-tab">
+                <div class="section-header">
+                    <h2>System Statistics</h2>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalUsersCount">-</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="adminUsersCount">-</h3>
+                            <p>Admins</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalBooksCount">-</h3>
+                            <p>Total Books</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="recentRegistrations">-</h3>
+                            <p>New Users (7 days)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Toast Container -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <!-- Login Modal (if not authenticated) -->
+    <div class="modal" id="adminLoginModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Admin Login Required</h2>
+            </div>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminUsername">Username</label>
+                    <input type="text" id="adminUsername" name="username" value="admin" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" name="password" value="admin" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
