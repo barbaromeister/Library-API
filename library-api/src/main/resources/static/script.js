@@ -6,13 +6,14 @@ class LibraryManager {
         this.currentView = 'grid';
         this.currentEditId = null;
         this.baseURL = '/api/books';
+        this.authURL = '/api/auth';
+        this.currentUser = null;
         this.init();
     }
 
     init() {
         this.bindEvents();
-        this.loadBooks();
-        this.updateStats();
+        this.checkAuthStatus();
     }
 
     bindEvents() {
@@ -81,7 +82,49 @@ class LibraryManager {
             if (e.key === 'Escape') {
                 this.closeModal();
                 this.closeDeleteModal();
+                this.closeAuthModals();
             }
+        });
+
+        // Authentication event handlers
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            this.openLoginModal();
+        });
+
+        document.getElementById('registerBtn').addEventListener('click', () => {
+            this.openRegisterModal();
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            this.logout();
+        });
+
+        // Auth modal close buttons
+        document.getElementById('closeLoginModal').addEventListener('click', () => {
+            this.closeLoginModal();
+        });
+
+        document.getElementById('cancelLoginBtn').addEventListener('click', () => {
+            this.closeLoginModal();
+        });
+
+        document.getElementById('closeRegisterModal').addEventListener('click', () => {
+            this.closeRegisterModal();
+        });
+
+        document.getElementById('cancelRegisterBtn').addEventListener('click', () => {
+            this.closeRegisterModal();
+        });
+
+        // Auth form submissions
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleLogin();
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleRegister();
         });
     }
 
@@ -434,6 +477,180 @@ class LibraryManager {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
+    }
+
+    // Authentication methods
+    async checkAuthStatus() {
+        try {
+            const response = await fetch(`${this.authURL}/me`, {
+                credentials: 'include'
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success) {
+                    this.currentUser = {
+                        username: data.username,
+                        role: data.role
+                    };
+                    this.showAuthenticatedUI();
+                    this.loadBooks();
+                    this.updateStats();
+                } else {
+                    this.showUnauthenticatedUI();
+                }
+            } else {
+                this.showUnauthenticatedUI();
+            }
+        } catch (error) {
+            console.error('Auth check failed:', error);
+            this.showUnauthenticatedUI();
+        }
+    }
+
+    showAuthenticatedUI() {
+        document.getElementById('authButtons').style.display = 'none';
+        document.getElementById('userInfo').style.display = 'flex';
+        document.getElementById('welcomeText').textContent = `Welcome, ${this.currentUser.username}`;
+        
+        document.getElementById('contentControls').style.display = 'block';
+        document.getElementById('searchSection').style.display = 'block';
+        document.getElementById('statsSection').style.display = 'block';
+        document.getElementById('booksSection').style.display = 'block';
+    }
+
+    showUnauthenticatedUI() {
+        document.getElementById('authButtons').style.display = 'flex';
+        document.getElementById('userInfo').style.display = 'none';
+        
+        document.getElementById('contentControls').style.display = 'none';
+        document.getElementById('searchSection').style.display = 'none';
+        document.getElementById('statsSection').style.display = 'none';
+        document.getElementById('booksSection').style.display = 'none';
+    }
+
+    openLoginModal() {
+        document.getElementById('loginModal').style.display = 'flex';
+        document.getElementById('loginUsername').focus();
+    }
+
+    closeLoginModal() {
+        document.getElementById('loginModal').style.display = 'none';
+        document.getElementById('loginForm').reset();
+    }
+
+    openRegisterModal() {
+        document.getElementById('registerModal').style.display = 'flex';
+        document.getElementById('registerUsername').focus();
+    }
+
+    closeRegisterModal() {
+        document.getElementById('registerModal').style.display = 'none';
+        document.getElementById('registerForm').reset();
+    }
+
+    closeAuthModals() {
+        this.closeLoginModal();
+        this.closeRegisterModal();
+    }
+
+    async handleLogin() {
+        const form = document.getElementById('loginForm');
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch(`${this.authURL}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    username: formData.get('username'),
+                    password: formData.get('password')
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                this.currentUser = {
+                    username: data.username,
+                    role: data.role
+                };
+                this.closeLoginModal();
+                this.showAuthenticatedUI();
+                this.loadBooks();
+                this.updateStats();
+                this.showToast('success', 'Login successful', `Welcome back, ${data.username}!`);
+            } else {
+                this.showToast('error', 'Login failed', data.message);
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            this.showToast('error', 'Login failed', 'Network error occurred');
+        }
+    }
+
+    async handleRegister() {
+        const form = document.getElementById('registerForm');
+        const formData = new FormData(form);
+        
+        const password = formData.get('password');
+        const confirmPassword = formData.get('confirmPassword');
+        
+        if (password !== confirmPassword) {
+            this.showToast('error', 'Registration failed', 'Passwords do not match');
+            return;
+        }
+        
+        try {
+            const response = await fetch(`${this.authURL}/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: formData.get('username'),
+                    email: formData.get('email'),
+                    password: password
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                this.closeRegisterModal();
+                this.showToast('success', 'Registration successful', 'Please login with your new account');
+                this.openLoginModal();
+            } else {
+                this.showToast('error', 'Registration failed', data.message);
+            }
+        } catch (error) {
+            console.error('Registration error:', error);
+            this.showToast('error', 'Registration failed', 'Network error occurred');
+        }
+    }
+
+    async logout() {
+        try {
+            const response = await fetch(`${this.authURL}/logout`, {
+                method: 'POST',
+                credentials: 'include'
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                this.currentUser = null;
+                this.showUnauthenticatedUI();
+                this.showToast('success', 'Logout successful', 'See you next time!');
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+            this.currentUser = null;
+            this.showUnauthenticatedUI();
+        }
     }
 }
 
