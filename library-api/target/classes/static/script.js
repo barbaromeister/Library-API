@@ -126,6 +126,11 @@ class LibraryManager {
             e.preventDefault();
             this.handleRegister();
         });
+
+        // Navigation button to search section
+        document.getElementById('goToSearchBtn').addEventListener('click', () => {
+            this.scrollToBookSearch();
+        });
     }
 
     async loadBooks() {
@@ -513,16 +518,20 @@ class LibraryManager {
         document.getElementById('userInfo').style.display = 'flex';
         document.getElementById('welcomeText').textContent = `Welcome, ${this.currentUser.username}`;
         
+        document.getElementById('bookSearchSection').style.display = 'block';
         document.getElementById('contentControls').style.display = 'block';
         document.getElementById('searchSection').style.display = 'block';
         document.getElementById('statsSection').style.display = 'block';
         document.getElementById('booksSection').style.display = 'block';
+        
+        this.initBookSearch();
     }
 
     showUnauthenticatedUI() {
         document.getElementById('authButtons').style.display = 'flex';
         document.getElementById('userInfo').style.display = 'none';
         
+        document.getElementById('bookSearchSection').style.display = 'none';
         document.getElementById('contentControls').style.display = 'none';
         document.getElementById('searchSection').style.display = 'none';
         document.getElementById('statsSection').style.display = 'none';
@@ -650,6 +659,251 @@ class LibraryManager {
             console.error('Logout error:', error);
             this.currentUser = null;
             this.showUnauthenticatedUI();
+        }
+    }
+
+    // Book Search Methods
+    initBookSearch() {
+        const searchInput = document.getElementById('bookSearchInput');
+        const suggestionsContainer = document.getElementById('searchSuggestions');
+        const searchResults = document.getElementById('searchResults');
+        const searchLoading = document.getElementById('searchLoading');
+        let searchTimeout;
+
+        // Handle search input
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            
+            clearTimeout(searchTimeout);
+            
+            if (query.length < 3) {
+                suggestionsContainer.style.display = 'none';
+                searchResults.innerHTML = '';
+                return;
+            }
+            
+            searchTimeout = setTimeout(() => {
+                this.searchBooks(query, true);
+            }, 300);
+        });
+
+        // Handle enter key for full search
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = e.target.value.trim();
+                if (query.length >= 3) {
+                    suggestionsContainer.style.display = 'none';
+                    this.searchBooks(query, false);
+                }
+            }
+        });
+
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.book-search-container')) {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+    }
+
+    async searchBooks(query, showSuggestions = false) {
+        const searchLoading = document.getElementById('searchLoading');
+        const suggestionsContainer = document.getElementById('searchSuggestions');
+        const searchResults = document.getElementById('searchResults');
+
+        try {
+            searchLoading.style.display = 'block';
+            
+            const endpoint = showSuggestions ? 'suggest' : 'search';
+            const limit = showSuggestions ? 5 : 12;
+            
+            const response = await fetch(`/api/books/${endpoint}?query=${encodeURIComponent(query)}&${showSuggestions ? 'limit' : 'maxResults'}=${limit}`, {
+                credentials: 'include'
+            });
+
+            if (response.ok) {
+                if (showSuggestions) {
+                    const suggestions = await response.json();
+                    this.renderSuggestions(suggestions);
+                } else {
+                    const data = await response.json();
+                    this.renderSearchResults(data.suggestions || data);
+                }
+            } else {
+                throw new Error('Search failed');
+            }
+
+        } catch (error) {
+            console.error('Search error:', error);
+            if (showSuggestions) {
+                suggestionsContainer.style.display = 'none';
+            } else {
+                searchResults.innerHTML = this.createNoResultsHTML('Search failed. Please try again.');
+            }
+        } finally {
+            searchLoading.style.display = 'none';
+        }
+    }
+
+    renderSuggestions(suggestions) {
+        const container = document.getElementById('searchSuggestions');
+        
+        if (!suggestions || suggestions.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+
+        container.innerHTML = suggestions.map(book => `
+            <div class="suggestion-item" onclick="libraryManager.selectSuggestion('${this.escapeHtml(JSON.stringify(book).replace(/'/g, "\\'"))}')">
+                <img class="suggestion-cover" 
+                     src="${book.thumbnail || book.smallThumbnail || '/api/placeholder/50x75'}" 
+                     alt="${this.escapeHtml(book.title)}"
+                     onerror="this.src='/api/placeholder/50x75'">
+                <div class="suggestion-info">
+                    <div class="suggestion-title">${this.escapeHtml(book.title)}</div>
+                    ${book.authors ? `<div class="suggestion-author">${this.escapeHtml(book.authors)}</div>` : ''}
+                    ${book.publisher ? `<div class="suggestion-publisher">${this.escapeHtml(book.publisher)}</div>` : ''}
+                </div>
+            </div>
+        `).join('');
+        
+        container.style.display = 'block';
+    }
+
+    selectSuggestion(bookDataStr) {
+        try {
+            const book = JSON.parse(bookDataStr);
+            document.getElementById('bookSearchInput').value = book.title;
+            document.getElementById('searchSuggestions').style.display = 'none';
+            this.renderSearchResults([book]);
+        } catch (error) {
+            console.error('Error selecting suggestion:', error);
+        }
+    }
+
+    renderSearchResults(books) {
+        const container = document.getElementById('searchResults');
+        
+        if (!books || books.length === 0) {
+            container.innerHTML = this.createNoResultsHTML('No books found. Try a different search term.');
+            return;
+        }
+
+        container.innerHTML = books.map(book => this.createBookCard(book)).join('');
+        
+        // Add event listeners to the "Add to Library" buttons
+        container.querySelectorAll('.add-to-library-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const bookData = JSON.parse(button.getAttribute('data-book'));
+                this.addToLibrary(bookData, button);
+            });
+        });
+    }
+
+    createBookCard(book) {
+        const coverUrl = book.mediumImage || book.thumbnail || book.smallThumbnail || '/api/placeholder/120x180';
+        const title = this.escapeHtml(book.title || 'Unknown Title');
+        const authors = this.escapeHtml(book.authors || 'Unknown Author');
+        const publisher = book.publisher ? this.escapeHtml(book.publisher) : '';
+        const publishedDate = book.publishedDate ? ` (${book.publishedDate.substring(0, 4)})` : '';
+        const bookId = 'book_' + Math.random().toString(36).substr(2, 9);
+
+        return `
+            <div class="book-result-card">
+                <div class="book-cover-container">
+                    <img class="book-cover" 
+                         src="${coverUrl}" 
+                         alt="${title}"
+                         onerror="this.src='/api/placeholder/120x180'">
+                </div>
+                <div class="book-info">
+                    <div class="book-title">${title}</div>
+                    <div class="book-author">${authors}</div>
+                    ${publisher ? `<div class="book-publisher">${publisher}${publishedDate}</div>` : ''}
+                </div>
+                <button class="add-to-library-btn" id="${bookId}" data-book='${this.escapeHtml(JSON.stringify(book))}'>
+                    <i class="fas fa-plus"></i>
+                    Add to Library
+                </button>
+            </div>
+        `;
+    }
+
+    createNoResultsHTML(message) {
+        return `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <h3>No Results</h3>
+                <p>${message}</p>
+            </div>
+        `;
+    }
+
+    async addToLibrary(bookData, buttonElement = null) {
+        try {
+            // Accept book data directly or parse if it's a string
+            const book = typeof bookData === 'string' ? JSON.parse(bookData) : bookData;
+            
+            // Use the passed button element or try to find it from event
+            const clickedButton = buttonElement || event?.target?.closest?.('.add-to-library-btn');
+            if (clickedButton) {
+                clickedButton.disabled = true;
+                clickedButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+            }
+            
+            // Call the API to add book to collection
+            const response = await fetch('/api/books/add-to-collection', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify(book)
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                this.showToast('success', 'Book Added', `"${book.title}" added to your library!`);
+                
+                if (clickedButton) {
+                    clickedButton.innerHTML = '<i class="fas fa-check"></i> Added';
+                    clickedButton.classList.add('added');
+                }
+                
+            } else {
+                throw new Error(data.message || 'Failed to add book');
+            }
+            
+        } catch (error) {
+            console.error('Error adding book to library:', error);
+            this.showToast('error', 'Error', 'Failed to add book to library: ' + error.message);
+            
+            // Re-enable the button on error
+            const errorButton = buttonElement || event?.target?.closest?.('.add-to-library-btn');
+            if (errorButton) {
+                errorButton.disabled = false;
+                errorButton.innerHTML = '<i class="fas fa-plus"></i> Add to Library';
+            }
+        }
+    }
+
+    scrollToBookSearch() {
+        const bookSearchSection = document.getElementById('bookSearchSection');
+        if (bookSearchSection) {
+            bookSearchSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Focus on the search input
+            setTimeout(() => {
+                const searchInput = document.getElementById('bookSearchInput');
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            }, 500);
         }
     }
 }

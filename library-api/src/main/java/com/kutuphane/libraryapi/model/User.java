@@ -2,6 +2,8 @@ package com.kutuphane.libraryapi.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "users")
@@ -29,6 +31,15 @@ public class User {
     
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+    
+    // User's book collection - many-to-many relationship
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+        name = "user_books",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private Set<Book> books = new HashSet<>();
     
     @PrePersist
     protected void onCreate() {
@@ -107,5 +118,23 @@ public class User {
     
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+    
+    public Set<Book> getBooks() {
+        return books;
+    }
+    
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+    
+    public void addBook(Book book) {
+        this.books.add(book);
+        book.getUsers().add(this);
+    }
+    
+    public void removeBook(Book book) {
+        this.books.remove(book);
+        book.getUsers().remove(this);
     }
 }

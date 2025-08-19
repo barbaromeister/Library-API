@@ -38,6 +38,31 @@
         </header>
 
         <main id="mainContent">
+            <!-- Book Search Section -->
+            <div class="book-search-section" id="bookSearchSection" style="display: none;">
+                <div class="search-header">
+                    <h2>Add Books to Your Collection</h2>
+                    <p>Search for books and add them to your personal library</p>
+                </div>
+                
+                <div class="book-search-container">
+                    <div class="search-input-container">
+                        <input type="text" 
+                               id="bookSearchInput" 
+                               placeholder="Search for books (e.g., Harry Potter, Pride and Prejudice)..."
+                               autocomplete="off">
+                        <i class="fas fa-search search-icon"></i>
+                        <div class="search-loading" id="searchLoading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+                
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
             <!-- Book Management Controls -->
             <div class="content-controls" id="contentControls" style="display: none;">
                 <button class="add-book-btn" id="addBookBtn">
@@ -100,14 +125,20 @@
             <!-- Books Section -->
             <section class="books-section" id="booksSection" style="display: none;">
                 <div class="section-header">
-                    <h2>Books Collection</h2>
-                    <div class="view-toggle">
-                        <button class="view-btn active" data-view="grid">
-                            <i class="fas fa-th-large"></i>
+                    <h2>My Books Collection</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="goToSearchBtn">
+                            <i class="fas fa-search"></i>
+                            Find More Books
                         </button>
-                        <button class="view-btn" data-view="list">
-                            <i class="fas fa-list"></i>
-                        </button>
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid">
+                                <i class="fas fa-th-large"></i>
+                            </button>
+                            <button class="view-btn" data-view="list">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
