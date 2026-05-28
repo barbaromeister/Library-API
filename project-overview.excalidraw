@@ -1,0 +1,606 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "type": "text", "id": "title", "x": 900, "y": 20, "width": 800, "height": 40,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 1, "version": 1, "versionNonce": 1001, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 32, "fontFamily": 1, "text": "Library API — Whole Project Overview",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Library API — Whole Project Overview",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 28
+    },
+
+    {
+      "type": "text", "id": "a-title", "x": 80, "y": 100, "width": 480, "height": 30,
+      "angle": 0, "strokeColor": "#1971c2", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 2, "version": 1, "versionNonce": 1002, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 22, "fontFamily": 1, "text": "[A]  High-level Architecture",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "[A]  High-level Architecture",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 20
+    },
+    {
+      "type": "rectangle", "id": "a-flutter-box", "x": 100, "y": 150, "width": 240, "height": 90,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#74c0fc",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "dashed", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 3, "version": 1, "versionNonce": 1003, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "a-flutter-text", "x": 115, "y": 165, "width": 210, "height": 60,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 4, "version": 1, "versionNonce": 1004, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 18, "fontFamily": 1, "text": "Flutter Client\n(mobile + web)\n[PLANNED — Faz 4]",
+      "textAlign": "center", "verticalAlign": "top", "containerId": null,
+      "originalText": "Flutter Client\n(mobile + web)\n[PLANNED — Faz 4]",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 16
+    },
+    {
+      "type": "arrow", "id": "a-arr-1", "x": 340, "y": 195, "width": 90, "height": 0,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 2},
+      "seed": 5, "version": 1, "versionNonce": 1005, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false,
+      "startBinding": null, "endBinding": null, "lastCommittedPoint": null,
+      "startArrowhead": null, "endArrowhead": "arrow",
+      "points": [[0, 0], [90, 0]]
+    },
+    {
+      "type": "text", "id": "a-arr-1-lbl", "x": 345, "y": 170, "width": 80, "height": 18,
+      "angle": 0, "strokeColor": "#868e96", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 6, "version": 1, "versionNonce": 1006, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 13, "fontFamily": 3, "text": "HTTPS·JSON",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "HTTPS·JSON",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 12
+    },
+    {
+      "type": "rectangle", "id": "a-api-box", "x": 430, "y": 150, "width": 240, "height": 90,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#ffec99",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 7, "version": 1, "versionNonce": 1007, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "a-api-text", "x": 445, "y": 165, "width": 210, "height": 60,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 8, "version": 1, "versionNonce": 1008, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 18, "fontFamily": 1, "text": "Spring Boot API\nlibrary-api:8080\nREST + Bearer JWT",
+      "textAlign": "center", "verticalAlign": "top", "containerId": null,
+      "originalText": "Spring Boot API\nlibrary-api:8080\nREST + Bearer JWT",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 16
+    },
+    {
+      "type": "arrow", "id": "a-arr-2", "x": 550, "y": 240, "width": 0, "height": 80,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 2},
+      "seed": 9, "version": 1, "versionNonce": 1009, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false,
+      "startBinding": null, "endBinding": null, "lastCommittedPoint": null,
+      "startArrowhead": null, "endArrowhead": "arrow",
+      "points": [[0, 0], [0, 80]]
+    },
+    {
+      "type": "text", "id": "a-arr-2-lbl", "x": 560, "y": 265, "width": 60, "height": 18,
+      "angle": 0, "strokeColor": "#868e96", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 10, "version": 1, "versionNonce": 1010, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 13, "fontFamily": 3, "text": "JDBC",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "JDBC",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 12
+    },
+    {
+      "type": "rectangle", "id": "a-pg-box", "x": 430, "y": 330, "width": 240, "height": 70,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#ced4da",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 11, "version": 1, "versionNonce": 1011, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "a-pg-text", "x": 445, "y": 345, "width": 210, "height": 45,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 12, "version": 1, "versionNonce": 1012, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 18, "fontFamily": 1, "text": "PostgreSQL 15\nlibrary-postgres:5432",
+      "textAlign": "center", "verticalAlign": "top", "containerId": null,
+      "originalText": "PostgreSQL 15\nlibrary-postgres:5432",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 16
+    },
+    {
+      "type": "arrow", "id": "a-arr-3", "x": 670, "y": 195, "width": 90, "height": 0,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 2},
+      "seed": 13, "version": 1, "versionNonce": 1013, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false,
+      "startBinding": null, "endBinding": null, "lastCommittedPoint": null,
+      "startArrowhead": null, "endArrowhead": "arrow",
+      "points": [[0, 0], [90, 0]]
+    },
+    {
+      "type": "text", "id": "a-arr-3-lbl", "x": 680, "y": 170, "width": 70, "height": 18,
+      "angle": 0, "strokeColor": "#868e96", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 14, "version": 1, "versionNonce": 1014, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 13, "fontFamily": 3, "text": "HTTPS",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "HTTPS",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 12
+    },
+    {
+      "type": "rectangle", "id": "a-gb-box", "x": 760, "y": 150, "width": 280, "height": 90,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#ffc9c9",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 15, "version": 1, "versionNonce": 1015, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "a-gb-text", "x": 775, "y": 165, "width": 250, "height": 60,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 16, "version": 1, "versionNonce": 1016, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 18, "fontFamily": 1, "text": "Google Books API\ngoogleapis.com/books/v1\n[external]",
+      "textAlign": "center", "verticalAlign": "top", "containerId": null,
+      "originalText": "Google Books API\ngoogleapis.com/books/v1\n[external]",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 16
+    },
+    {
+      "type": "rectangle", "id": "a-oldfe-box", "x": 100, "y": 330, "width": 300, "height": 70,
+      "angle": 0, "strokeColor": "#c92a2a", "backgroundColor": "#ffe0e0",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "dashed", "roughness": 1,
+      "opacity": 60, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 17, "version": 1, "versionNonce": 1017, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "a-oldfe-text", "x": 115, "y": 343, "width": 270, "height": 45,
+      "angle": 0, "strokeColor": "#c92a2a", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 18, "version": 1, "versionNonce": 1018, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 16, "fontFamily": 1, "text": "× Vanilla HTML/JS FE\nFaz 0 ✓ silindi",
+      "textAlign": "center", "verticalAlign": "top", "containerId": null,
+      "originalText": "× Vanilla HTML/JS FE\nFaz 0 ✓ silindi",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 14
+    },
+
+    {
+      "type": "text", "id": "b-title", "x": 1320, "y": 100, "width": 300, "height": 30,
+      "angle": 0, "strokeColor": "#1971c2", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 19, "version": 1, "versionNonce": 1019, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 22, "fontFamily": 1, "text": "[B]  Tech Stack",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "[B]  Tech Stack",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 20
+    },
+    {
+      "type": "rectangle", "id": "b-box", "x": 1320, "y": 140, "width": 1220, "height": 280,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#f8f9fa",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 20, "version": 1, "versionNonce": 1020, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "b-text", "x": 1340, "y": 155, "width": 1180, "height": 260,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 21, "version": 1, "versionNonce": 1021, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 15, "fontFamily": 3, "text": "BACKEND\n  · Spring Boot 3.5.3                 · Java 21\n  · Spring Web (MVC)                  · Spring Data JPA / Hibernate\n  · Spring Security                   · Spring WebFlux WebClient (Google Books)\n  · Maven                             · spring-boot-starter-validation [PLANNED — Faz 2D]\n\nAUTH\n  · BCryptPasswordEncoder (mevcut)    · JWT (HS256) [PLANNED — Faz 3A]\n\nPERSISTENCE\n  · PostgreSQL 15-alpine              · ddl-auto=update (dev)\n\nEXTERNAL\n  · Google Books API v1 (REST)\n\nFRONTEND  [PLANNED — Faz 4]\n  · Flutter (mobile iOS+Android + web)\n  · Dio (HTTP)                        · Riverpod (state)\n  · go_router (routing)               · flutter_secure_storage (JWT)\n  · freezed + json_serializable (DTO codegen)\n\nINFRA\n  · Docker / docker-compose           · eclipse-temurin:21-jre-alpine (runtime)",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "BACKEND\n  · Spring Boot 3.5.3                 · Java 21\n  · Spring Web (MVC)                  · Spring Data JPA / Hibernate\n  · Spring Security                   · Spring WebFlux WebClient (Google Books)\n  · Maven                             · spring-boot-starter-validation [PLANNED — Faz 2D]\n\nAUTH\n  · BCryptPasswordEncoder (mevcut)    · JWT (HS256) [PLANNED — Faz 3A]\n\nPERSISTENCE\n  · PostgreSQL 15-alpine              · ddl-auto=update (dev)\n\nEXTERNAL\n  · Google Books API v1 (REST)\n\nFRONTEND  [PLANNED — Faz 4]\n  · Flutter (mobile iOS+Android + web)\n  · Dio (HTTP)                        · Riverpod (state)\n  · go_router (routing)               · flutter_secure_storage (JWT)\n  · freezed + json_serializable (DTO codegen)\n\nINFRA\n  · Docker / docker-compose           · eclipse-temurin:21-jre-alpine (runtime)",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 13
+    },
+
+    {
+      "type": "text", "id": "c-title", "x": 80, "y": 460, "width": 600, "height": 30,
+      "angle": 0, "strokeColor": "#1971c2", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 22, "version": 1, "versionNonce": 1022, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 22, "fontFamily": 1, "text": "[C]  Backend Layered Architecture",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "[C]  Backend Layered Architecture",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 20
+    },
+    {
+      "type": "text", "id": "c-flow-note", "x": 80, "y": 495, "width": 1000, "height": 20,
+      "angle": 0, "strokeColor": "#868e96", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 23, "version": 1, "versionNonce": 1023, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "request →  Controller  →  Service  →  Repository  →  Entity  →  DB     ·     DTO ⇄ Controller    ·     Config = cross-cutting",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "request →  Controller  →  Service  →  Repository  →  Entity  →  DB     ·     DTO ⇄ Controller    ·     Config = cross-cutting",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 12
+    },
+
+    {
+      "type": "rectangle", "id": "c-ctrl-box", "x": 80, "y": 530, "width": 380, "height": 720,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#ffec99",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 24, "version": 1, "versionNonce": 1024, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "c-ctrl-header", "x": 100, "y": 545, "width": 340, "height": 30,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 25, "version": 1, "versionNonce": 1025, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 20, "fontFamily": 1, "text": "Controllers  (controller/)",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Controllers  (controller/)",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 18
+    },
+    {
+      "type": "text", "id": "c-ctrl-text", "x": 100, "y": 585, "width": 340, "height": 660,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 26, "version": 1, "versionNonce": 1026, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "AuthController\n  @RequestMapping /api/auth\n  · register, login, logout, me\n  ⚠ session + manual SecCtx\n  → Faz 3A: JWT döner\n\nBookController\n  @RequestMapping /api/books\n  · CRUD + search/{author,title,isbn}\n  ⚠ Book entity in/out\n  → Faz 2C: BookRequest/Response\n  → Faz 2B: updateBook eksik alanlar\n\nBookSearchController\n  @RequestMapping /api/books\n  · /search, /suggest\n  · /add-to-collection\n  · /check-collection\n  · /test-search  ← silinecek\n  → Faz 2A: BookController'a birleşir\n\nAdminController\n  @RequestMapping /api/admin\n  · /test, /users\n  ⚠ mock veri + email sızıntısı\n  → Faz 1B: gerçek UserRepository\n\n────────────────────────\n× WebController        Faz 0 ✓\n× SetupController      Faz 1A ✓\n× TestController       Faz 1B ✓",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "AuthController\n  @RequestMapping /api/auth\n  · register, login, logout, me\n  ⚠ session + manual SecCtx\n  → Faz 3A: JWT döner\n\nBookController\n  @RequestMapping /api/books\n  · CRUD + search/{author,title,isbn}\n  ⚠ Book entity in/out\n  → Faz 2C: BookRequest/Response\n  → Faz 2B: updateBook eksik alanlar\n\nBookSearchController\n  @RequestMapping /api/books\n  · /search, /suggest\n  · /add-to-collection\n  · /check-collection\n  · /test-search  ← silinecek\n  → Faz 2A: BookController'a birleşir\n\nAdminController\n  @RequestMapping /api/admin\n  · /test, /users\n  ⚠ mock veri + email sızıntısı\n  → Faz 1B: gerçek UserRepository\n\n────────────────────────\n× WebController        Faz 0 ✓\n× SetupController      Faz 1A ✓\n× TestController       Faz 1B ✓",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    },
+
+    {
+      "type": "rectangle", "id": "c-dto-box", "x": 480, "y": 530, "width": 380, "height": 720,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#ffd8a8",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "dashed", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 27, "version": 1, "versionNonce": 1027, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "c-dto-header", "x": 500, "y": 545, "width": 340, "height": 30,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 28, "version": 1, "versionNonce": 1028, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 20, "fontFamily": 1, "text": "DTOs  (dto/) — PLANNED Faz 2C",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "DTOs  (dto/) — PLANNED Faz 2C",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 18
+    },
+    {
+      "type": "text", "id": "c-dto-text", "x": 500, "y": 585, "width": 340, "height": 660,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 29, "version": 1, "versionNonce": 1029, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "Java 21 records\n@Valid + jakarta.validation\nMapping: DTO.from(Entity)\n\nauth/\n  · LoginRequest\n     username, password\n  · RegisterRequest\n     username @Size 3-30\n     email    @Email\n     password @Size 8-72\n  · AuthResponse\n     token, tokenType, user\n  · UserResponse\n     id, username, email,\n     role, createdAt\n\nbook/\n  · BookRequest\n     title, author, isbn,\n     publishDate, pageCount,\n     publisher, description,\n     language, covers\n  · BookResponse\n     + id, googleBooksId,\n     createdAt, updatedAt\n  · CoverImages (nested)\n     small, thumb, medium,\n     large\n\nsearch/\n  · GoogleBookResult\n     (eski BookSuggestion)\n  · SearchResponse\n     query, count, results\n  · AddToCollectionRequest\n     googleBooksId\n\ncommon/\n  · ErrorResponse\n     timestamp Instant\n     status, error,\n     message, path,\n     fieldErrors[]?",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Java 21 records\n@Valid + jakarta.validation\nMapping: DTO.from(Entity)\n\nauth/\n  · LoginRequest\n     username, password\n  · RegisterRequest\n     username @Size 3-30\n     email    @Email\n     password @Size 8-72\n  · AuthResponse\n     token, tokenType, user\n  · UserResponse\n     id, username, email,\n     role, createdAt\n\nbook/\n  · BookRequest\n     title, author, isbn,\n     publishDate, pageCount,\n     publisher, description,\n     language, covers\n  · BookResponse\n     + id, googleBooksId,\n     createdAt, updatedAt\n  · CoverImages (nested)\n     small, thumb, medium,\n     large\n\nsearch/\n  · GoogleBookResult\n     (eski BookSuggestion)\n  · SearchResponse\n     query, count, results\n  · AddToCollectionRequest\n     googleBooksId\n\ncommon/\n  · ErrorResponse\n     timestamp Instant\n     status, error,\n     message, path,\n     fieldErrors[]?",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    },
+
+    {
+      "type": "rectangle", "id": "c-svc-box", "x": 880, "y": 530, "width": 380, "height": 720,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 30, "version": 1, "versionNonce": 1030, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "c-svc-header", "x": 900, "y": 545, "width": 340, "height": 30,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 31, "version": 1, "versionNonce": 1031, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 20, "fontFamily": 1, "text": "Services  (service/)",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Services  (service/)",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 18
+    },
+    {
+      "type": "text", "id": "c-svc-text", "x": 900, "y": 585, "width": 340, "height": 660,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 32, "version": 1, "versionNonce": 1032, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "BookService (interface)\n  · getAllBooks()\n  · getBookById(id)\n  · createBook(Book)\n  · updateBook(id, Book)\n  · deleteBook(id)\n  · findBy{Author,Title,Isbn}\n\nBookServiceImpl\n  ⚠ updateBook sadece 5 alan\n  → Faz 2B: tüm alanlar\n  → Faz 2C: imza DTO alır\n\nUserService\n  · registerUser(u, e, p)\n     → BCrypt.encode\n  · authenticateUser(u, p)\n     → BCrypt.matches\n  · findBy{Username,Email}\n\nUserBookService  @Transactional\n  · addBookToUserCollection\n     (username, BookSuggestion)\n  · removeBookFromCollection\n  · isBookInUserCollection\n  → Faz 2C: BookSuggestion →\n     GoogleBookResult (dto/search)\n\nGoogleBooksService\n  WebClient → googleapis.com\n  · searchBooks(query, max)\n  → BookSuggestion nested\n  → Faz 2C: dto/search/\n     GoogleBookResult'a taşınır",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "BookService (interface)\n  · getAllBooks()\n  · getBookById(id)\n  · createBook(Book)\n  · updateBook(id, Book)\n  · deleteBook(id)\n  · findBy{Author,Title,Isbn}\n\nBookServiceImpl\n  ⚠ updateBook sadece 5 alan\n  → Faz 2B: tüm alanlar\n  → Faz 2C: imza DTO alır\n\nUserService\n  · registerUser(u, e, p)\n     → BCrypt.encode\n  · authenticateUser(u, p)\n     → BCrypt.matches\n  · findBy{Username,Email}\n\nUserBookService  @Transactional\n  · addBookToUserCollection\n     (username, BookSuggestion)\n  · removeBookFromCollection\n  · isBookInUserCollection\n  → Faz 2C: BookSuggestion →\n     GoogleBookResult (dto/search)\n\nGoogleBooksService\n  WebClient → googleapis.com\n  · searchBooks(query, max)\n  → BookSuggestion nested\n  → Faz 2C: dto/search/\n     GoogleBookResult'a taşınır",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    },
+
+    {
+      "type": "rectangle", "id": "c-repo-box", "x": 1280, "y": 530, "width": 380, "height": 720,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#d0bfff",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 33, "version": 1, "versionNonce": 1033, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "c-repo-header", "x": 1300, "y": 545, "width": 340, "height": 30,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 34, "version": 1, "versionNonce": 1034, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 20, "fontFamily": 1, "text": "Repositories  (repository/)",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Repositories  (repository/)",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 18
+    },
+    {
+      "type": "text", "id": "c-repo-text", "x": 1300, "y": 585, "width": 340, "height": 660,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 35, "version": 1, "versionNonce": 1035, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "Spring Data JPA\nextends JpaRepository<E, ID>\n\nBookRepository : <Book, Long>\n  · findAll()\n  · findById(id)\n  · save(book)\n  · delete(book)\n  ── custom queries ──\n  · findByAuthorContaining\n     IgnoreCase(author)\n  · findByTitleContaining\n     IgnoreCase(title)\n  · findByIsbn(isbn)\n  · findByGoogleBooksId(gid)\n  · findByTitleAndAuthor\n     (title, author)\n\nUserRepository : <User, Long>\n  · findById, save, delete\n  ── custom queries ──\n  · findByUsername(u)\n  · findByEmail(e)\n  · existsByUsername(u)\n  · existsByEmail(e)\n\nNote:\n  Hibernate ddl-auto=update\n  (dev only). Flyway/Liquibase\n  prod için ileride.",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Spring Data JPA\nextends JpaRepository<E, ID>\n\nBookRepository : <Book, Long>\n  · findAll()\n  · findById(id)\n  · save(book)\n  · delete(book)\n  ── custom queries ──\n  · findByAuthorContaining\n     IgnoreCase(author)\n  · findByTitleContaining\n     IgnoreCase(title)\n  · findByIsbn(isbn)\n  · findByGoogleBooksId(gid)\n  · findByTitleAndAuthor\n     (title, author)\n\nUserRepository : <User, Long>\n  · findById, save, delete\n  ── custom queries ──\n  · findByUsername(u)\n  · findByEmail(e)\n  · existsByUsername(u)\n  · existsByEmail(e)\n\nNote:\n  Hibernate ddl-auto=update\n  (dev only). Flyway/Liquibase\n  prod için ileride.",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    },
+
+    {
+      "type": "rectangle", "id": "c-ent-box", "x": 1680, "y": 530, "width": 380, "height": 720,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#ced4da",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 36, "version": 1, "versionNonce": 1036, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "c-ent-header", "x": 1700, "y": 545, "width": 340, "height": 30,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 37, "version": 1, "versionNonce": 1037, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 20, "fontFamily": 1, "text": "Entities  (model/)",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Entities  (model/)",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 18
+    },
+    {
+      "type": "text", "id": "c-ent-text", "x": 1700, "y": 585, "width": 340, "height": 660,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 38, "version": 1, "versionNonce": 1038, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "@Entity Book   tbl: books\n  · id              Long PK\n  · title           String NN\n  · author          String NN\n  · isbn            String(13)\n  · publishDate     LocalDate\n  · pageCount       Integer\n  · googleBooksId   String UQ\n  · publisher       String\n  · description     TEXT\n  · language        String\n  · smallThumbnail  String\n  · thumbnail       String\n  · mediumImage     String\n  · largeImage      String\n  · users           Set<User> M2M\n  · createdAt       LocalDateTime\n  · updatedAt       LocalDateTime\n  ⚠ users JSON'a sızıyor\n  → Faz 2C: BookResponse\n     ile temizlenir\n\n@Entity User   tbl: users\n  · id              Long PK\n  · username        String UQ NN\n  · email           String UQ NN\n  · password        String NN\n     BCrypt hash\n  · role            enum USER|ADMIN\n  · books           Set<Book> M2M\n  · createdAt       LocalDateTime\n  · updatedAt       LocalDateTime\n  ⚠ password JSON'a sızabilir\n  → Faz 2C: UserResponse\n\nJoin table: user_books\n  (user_id, book_id)",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "@Entity Book   tbl: books\n  · id              Long PK\n  · title           String NN\n  · author          String NN\n  · isbn            String(13)\n  · publishDate     LocalDate\n  · pageCount       Integer\n  · googleBooksId   String UQ\n  · publisher       String\n  · description     TEXT\n  · language        String\n  · smallThumbnail  String\n  · thumbnail       String\n  · mediumImage     String\n  · largeImage      String\n  · users           Set<User> M2M\n  · createdAt       LocalDateTime\n  · updatedAt       LocalDateTime\n  ⚠ users JSON'a sızıyor\n  → Faz 2C: BookResponse\n     ile temizlenir\n\n@Entity User   tbl: users\n  · id              Long PK\n  · username        String UQ NN\n  · email           String UQ NN\n  · password        String NN\n     BCrypt hash\n  · role            enum USER|ADMIN\n  · books           Set<Book> M2M\n  · createdAt       LocalDateTime\n  · updatedAt       LocalDateTime\n  ⚠ password JSON'a sızabilir\n  → Faz 2C: UserResponse\n\nJoin table: user_books\n  (user_id, book_id)",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    },
+
+    {
+      "type": "rectangle", "id": "c-cfg-box", "x": 2080, "y": 530, "width": 460, "height": 720,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 39, "version": 1, "versionNonce": 1039, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "c-cfg-header", "x": 2100, "y": 545, "width": 420, "height": 30,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 40, "version": 1, "versionNonce": 1040, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 20, "fontFamily": 1, "text": "Config & Cross-cutting",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Config & Cross-cutting",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 18
+    },
+    {
+      "type": "text", "id": "c-cfg-text", "x": 2100, "y": 585, "width": 420, "height": 660,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 41, "version": 1, "versionNonce": 1041, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "config/SecurityConfig\n  @EnableWebSecurity\n  · BCryptPasswordEncoder\n  ⚠ anyRequest().permitAll()\n  ⚠ formLogin/basic disabled\n  ⚠ session (max 1)\n  → Faz 1C:\n     STATELESS sessions\n     /api/auth/** public\n     /api/admin/** ROLE_ADMIN\n     mutations  authenticated\n     + JwtAuthenticationFilter\n\nconfig/WebConfig\n  @Configuration YORUMLU !\n  → Faz 2E: CORS aç\n     allowedOrigins:\n       http://localhost:* (dev)\n       https://<flutter-host>\n     allowedHeaders: *\n     Authorization expose\n\nexception/\n  GlobalExceptionHandler\n   @ControllerAdvice\n   · ResourceNotFoundException\n      → 404 ErrorDetails\n   · Exception (catch-all)\n      → 500 ErrorDetails\n   ⚠ Date kullanıyor\n   → Faz 2C: ErrorResponse\n      (Instant)\n   → Faz 2D: handler ekle\n      MethodArgumentNotValid\n      → 400 + fieldErrors[]\n\n   ResourceNotFoundException\n   ErrorDetails (silinecek)\n\nLibraryApiApplication\n  @SpringBootApplication\n  main()",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "config/SecurityConfig\n  @EnableWebSecurity\n  · BCryptPasswordEncoder\n  ⚠ anyRequest().permitAll()\n  ⚠ formLogin/basic disabled\n  ⚠ session (max 1)\n  → Faz 1C:\n     STATELESS sessions\n     /api/auth/** public\n     /api/admin/** ROLE_ADMIN\n     mutations  authenticated\n     + JwtAuthenticationFilter\n\nconfig/WebConfig\n  @Configuration YORUMLU !\n  → Faz 2E: CORS aç\n     allowedOrigins:\n       http://localhost:* (dev)\n       https://<flutter-host>\n     allowedHeaders: *\n     Authorization expose\n\nexception/\n  GlobalExceptionHandler\n   @ControllerAdvice\n   · ResourceNotFoundException\n      → 404 ErrorDetails\n   · Exception (catch-all)\n      → 500 ErrorDetails\n   ⚠ Date kullanıyor\n   → Faz 2C: ErrorResponse\n      (Instant)\n   → Faz 2D: handler ekle\n      MethodArgumentNotValid\n      → 400 + fieldErrors[]\n\n   ResourceNotFoundException\n   ErrorDetails (silinecek)\n\nLibraryApiApplication\n  @SpringBootApplication\n  main()",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    },
+
+    {
+      "type": "arrow", "id": "c-dep-1", "x": 460, "y": 890, "width": 20, "height": 0,
+      "angle": 0, "strokeColor": "#495057", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 0,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 2},
+      "seed": 42, "version": 1, "versionNonce": 1042, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false,
+      "startBinding": null, "endBinding": null, "lastCommittedPoint": null,
+      "startArrowhead": null, "endArrowhead": "arrow",
+      "points": [[0, 0], [20, 0]]
+    },
+    {
+      "type": "arrow", "id": "c-dep-2", "x": 860, "y": 890, "width": 20, "height": 0,
+      "angle": 0, "strokeColor": "#495057", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 0,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 2},
+      "seed": 43, "version": 1, "versionNonce": 1043, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false,
+      "startBinding": null, "endBinding": null, "lastCommittedPoint": null,
+      "startArrowhead": null, "endArrowhead": "arrow",
+      "points": [[0, 0], [20, 0]]
+    },
+    {
+      "type": "arrow", "id": "c-dep-3", "x": 1260, "y": 890, "width": 20, "height": 0,
+      "angle": 0, "strokeColor": "#495057", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 0,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 2},
+      "seed": 44, "version": 1, "versionNonce": 1044, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false,
+      "startBinding": null, "endBinding": null, "lastCommittedPoint": null,
+      "startArrowhead": null, "endArrowhead": "arrow",
+      "points": [[0, 0], [20, 0]]
+    },
+    {
+      "type": "arrow", "id": "c-dep-4", "x": 1660, "y": 890, "width": 20, "height": 0,
+      "angle": 0, "strokeColor": "#495057", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 0,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 2},
+      "seed": 45, "version": 1, "versionNonce": 1045, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false,
+      "startBinding": null, "endBinding": null, "lastCommittedPoint": null,
+      "startArrowhead": null, "endArrowhead": "arrow",
+      "points": [[0, 0], [20, 0]]
+    },
+
+    {
+      "type": "text", "id": "d-title", "x": 80, "y": 1280, "width": 600, "height": 30,
+      "angle": 0, "strokeColor": "#1971c2", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 46, "version": 1, "versionNonce": 1046, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 22, "fontFamily": 1, "text": "[D]  Endpoint → DTO Mapping",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "[D]  Endpoint → DTO Mapping",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 20
+    },
+    {
+      "type": "rectangle", "id": "d-box", "x": 80, "y": 1320, "width": 2460, "height": 460,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#f8f9fa",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 47, "version": 1, "versionNonce": 1047, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "d-text", "x": 100, "y": 1335, "width": 2420, "height": 430,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 48, "version": 1, "versionNonce": 1048, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "METHOD  PATH                                  AUTH       REQUEST DTO            RESPONSE DTO                       NOT\n─────── ───────────────────────────────────────── ────────── ────────────────────── ──────────────────────────────── ────────────────────────────\n[ AUTH  /api/auth/* ]\nPOST    /api/auth/register                        public     RegisterRequest     →  AuthResponse                    Faz 3A: JWT token alanı dolar\nPOST    /api/auth/login                           public     LoginRequest        →  AuthResponse                    Faz 3A: JWT token alanı dolar\nPOST    /api/auth/logout                          bearer     —                   →  204                              session.invalidate kalkar\nGET     /api/auth/me                              bearer     —                   →  UserResponse                    Bearer → principal\n\n[ BOOK CRUD  /api/books/* ]\nGET     /api/books                                public     —                   →  List<BookResponse>              users alanı sızmaz artık\nGET     /api/books/{id}                           public     —                   →  BookResponse\nPOST    /api/books                                bearer     BookRequest         →  BookResponse  (201)\nPUT     /api/books/{id}                           bearer     BookRequest         →  BookResponse                    Faz 2B: tüm alanlar update edilir\nDELETE  /api/books/{id}                           ADMIN      —                   →  204\nGET     /api/books/search/author                  public     ?author=            →  List<BookResponse>\nGET     /api/books/search/title                   public     ?title=             →  List<BookResponse>\nGET     /api/books/search/isbn                    public     ?isbn=              →  BookResponse\n\n[ GOOGLE BOOKS SEARCH  /api/books/* — Faz 2A ile birleşir ]\nGET     /api/books/google-search    (← /search)   public     ?query= ?max=       →  SearchResponse                   query, count, results\nGET     /api/books/google-suggest   (← /suggest)  public     ?query= ?limit=     →  List<GoogleBookResult>\nPOST    /api/books/collection       (← /add-..)   bearer     AddToCollectionReq  →  BookResponse                    sadece googleBooksId\nGET     /api/books/collection/check (← /check..)  bearer     ?googleBooksId=     →  { inCollection: bool }\n\n[ ADMIN  /api/admin/* ]\nGET     /api/admin/users                          ADMIN      —                   →  List<UserResponse>              Faz 1B: gerçek repo, mock kalkar\n\n[ ERROR  her endpoint ]\n4xx / 5xx                                                                       →  ErrorResponse                   timestamp, status, error, message, path\n400 (validation)                                                                →  ErrorResponse + fieldErrors[]   Faz 2D: @Valid handler\n\n[ REMOVED — silinen endpoint'ler ]\n×  GET   /api/admin/test                                                                                             Faz 1B ✓\n×  GET   /api/test/health,  POST /api/test/echo,  GET /api/test/admin/users                                          Faz 1B ✓\n×  POST  /api/setup/create-admin,  GET /api/setup/test-password                                                      Faz 1A ✓ (kritik açık)\n×  GET   /api/books/test-search                                                                                      Faz 2A ile gidecek\n×  GET   /                                                                                                          Faz 0 ✓ (WebController)",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "METHOD  PATH                                  AUTH       REQUEST DTO            RESPONSE DTO                       NOT\n─────── ───────────────────────────────────────── ────────── ────────────────────── ──────────────────────────────── ────────────────────────────\n[ AUTH  /api/auth/* ]\nPOST    /api/auth/register                        public     RegisterRequest     →  AuthResponse                    Faz 3A: JWT token alanı dolar\nPOST    /api/auth/login                           public     LoginRequest        →  AuthResponse                    Faz 3A: JWT token alanı dolar\nPOST    /api/auth/logout                          bearer     —                   →  204                              session.invalidate kalkar\nGET     /api/auth/me                              bearer     —                   →  UserResponse                    Bearer → principal\n\n[ BOOK CRUD  /api/books/* ]\nGET     /api/books                                public     —                   →  List<BookResponse>              users alanı sızmaz artık\nGET     /api/books/{id}                           public     —                   →  BookResponse\nPOST    /api/books                                bearer     BookRequest         →  BookResponse  (201)\nPUT     /api/books/{id}                           bearer     BookRequest         →  BookResponse                    Faz 2B: tüm alanlar update edilir\nDELETE  /api/books/{id}                           ADMIN      —                   →  204\nGET     /api/books/search/author                  public     ?author=            →  List<BookResponse>\nGET     /api/books/search/title                   public     ?title=             →  List<BookResponse>\nGET     /api/books/search/isbn                    public     ?isbn=              →  BookResponse\n\n[ GOOGLE BOOKS SEARCH  /api/books/* — Faz 2A ile birleşir ]\nGET     /api/books/google-search    (← /search)   public     ?query= ?max=       →  SearchResponse                   query, count, results\nGET     /api/books/google-suggest   (← /suggest)  public     ?query= ?limit=     →  List<GoogleBookResult>\nPOST    /api/books/collection       (← /add-..)   bearer     AddToCollectionReq  →  BookResponse                    sadece googleBooksId\nGET     /api/books/collection/check (← /check..)  bearer     ?googleBooksId=     →  { inCollection: bool }\n\n[ ADMIN  /api/admin/* ]\nGET     /api/admin/users                          ADMIN      —                   →  List<UserResponse>              Faz 1B: gerçek repo, mock kalkar\n\n[ ERROR  her endpoint ]\n4xx / 5xx                                                                       →  ErrorResponse                   timestamp, status, error, message, path\n400 (validation)                                                                →  ErrorResponse + fieldErrors[]   Faz 2D: @Valid handler\n\n[ REMOVED — silinen endpoint'ler ]\n×  GET   /api/admin/test                                                                                             Faz 1B ✓\n×  GET   /api/test/health,  POST /api/test/echo,  GET /api/test/admin/users                                          Faz 1B ✓\n×  POST  /api/setup/create-admin,  GET /api/setup/test-password                                                      Faz 1A ✓ (kritik açık)\n×  GET   /api/books/test-search                                                                                      Faz 2A ile gidecek\n×  GET   /                                                                                                          Faz 0 ✓ (WebController)",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    },
+
+    {
+      "type": "text", "id": "e-title", "x": 80, "y": 1810, "width": 600, "height": 30,
+      "angle": 0, "strokeColor": "#1971c2", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 49, "version": 1, "versionNonce": 1049, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 22, "fontFamily": 1, "text": "[E]  Auth Flow Sequence",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "[E]  Auth Flow Sequence",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 20
+    },
+    {
+      "type": "rectangle", "id": "e-box", "x": 80, "y": 1850, "width": 1620, "height": 700,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#f8f9fa",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 50, "version": 1, "versionNonce": 1050, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "e-text", "x": 100, "y": 1865, "width": 1580, "height": 670,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 51, "version": 1, "versionNonce": 1051, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "Actors:  Client  ·  AuthController  ·  UserService  ·  JwtService(planned)  ·  SecurityContextHolder  ·  UserRepository  ·  PostgreSQL\n\n──────────────────────────────────────  1) REGISTER  ──────────────────────────────────────\nClient  ──POST /api/auth/register  {username, email, password}──▶  AuthController.register(@Valid RegisterRequest)\nAuthController  ──registerUser(u, e, p)──▶  UserService\nUserService  ──existsByUsername(u) / existsByEmail(e)──▶  UserRepository  ──SELECT──▶  PostgreSQL\nUserRepository  ◀──false──  UserService\nUserService  ──BCrypt.encode(p)──▶  PasswordEncoder\nUserService  ──save(new User)──▶  UserRepository  ──INSERT──▶  PostgreSQL\nUserService  ◀──User──  AuthController\nAuthController  ──generate(user)──▶  JwtService  [PLANNED — Faz 3A]\nAuthController  ──▶ Client  : 200  AuthResponse { token, tokenType:\"Bearer\", user: UserResponse }\n\n──────────────────────────────────────  2) LOGIN (planlanan JWT akışı — Faz 3A)  ──────────────────────────────────────\nClient  ──POST /api/auth/login  {username, password}──▶  AuthController.login(@Valid LoginRequest)\nAuthController  ──authenticateUser(u, p)──▶  UserService\nUserService  ──findByUsername(u)──▶  UserRepository  ──SELECT──▶  PostgreSQL\nUserService  ──BCrypt.matches(raw, hash)──▶  PasswordEncoder\nUserService  ◀──true──  AuthController\nAuthController  ──generate(user)──▶  JwtService  [PLANNED]\nAuthController  ──▶ Client  : 200  AuthResponse { token: \"<JWT>\", user }\n\n  ── eski (silinecek) ──\n  AuthController.login eski:  session.setAttribute(\"userId\", ..) + SecurityContextHolder manuel set\n  Faz 3A ile bu satırlar kalkar.\n\n──────────────────────────────────────  3) /me  WITH BEARER TOKEN (Faz 3A)  ──────────────────────────────────────\nClient  ──GET /api/auth/me  Authorization: Bearer <token>──▶  JwtAuthenticationFilter\nJwtAuthenticationFilter  ──verify(token)──▶  JwtService\nJwtAuthenticationFilter  ──set(Authentication)──▶  SecurityContextHolder\nJwtAuthenticationFilter  ──chain.doFilter──▶  AuthController.getCurrentUser()\nAuthController  ──findByUsername(principal)──▶  UserService  ──▶  UserRepository  ──▶  PostgreSQL\nAuthController  ──▶ Client  : 200  UserResponse { id, username, email, role, createdAt }\n\n──────────────────────────────────────  4) FAILURE MODES  ──────────────────────────────────────\n· Register, kullanıcı/email mevcut       →  RuntimeException  →  GlobalExceptionHandler  →  500 ErrorResponse   (Faz 2D: 409 Conflict)\n· Login yanlış parola                    →  AuthResponse {success=false}  (eski) →  400 ErrorResponse (Faz 3A)\n· /me token yok/expired                  →  Filter: 401  ErrorResponse\n· @Valid hata                            →  400  ErrorResponse + fieldErrors[]  (Faz 2D)",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "Actors:  Client  ·  AuthController  ·  UserService  ·  JwtService(planned)  ·  SecurityContextHolder  ·  UserRepository  ·  PostgreSQL\n\n──────────────────────────────────────  1) REGISTER  ──────────────────────────────────────\nClient  ──POST /api/auth/register  {username, email, password}──▶  AuthController.register(@Valid RegisterRequest)\nAuthController  ──registerUser(u, e, p)──▶  UserService\nUserService  ──existsByUsername(u) / existsByEmail(e)──▶  UserRepository  ──SELECT──▶  PostgreSQL\nUserRepository  ◀──false──  UserService\nUserService  ──BCrypt.encode(p)──▶  PasswordEncoder\nUserService  ──save(new User)──▶  UserRepository  ──INSERT──▶  PostgreSQL\nUserService  ◀──User──  AuthController\nAuthController  ──generate(user)──▶  JwtService  [PLANNED — Faz 3A]\nAuthController  ──▶ Client  : 200  AuthResponse { token, tokenType:\"Bearer\", user: UserResponse }\n\n──────────────────────────────────────  2) LOGIN (planlanan JWT akışı — Faz 3A)  ──────────────────────────────────────\nClient  ──POST /api/auth/login  {username, password}──▶  AuthController.login(@Valid LoginRequest)\nAuthController  ──authenticateUser(u, p)──▶  UserService\nUserService  ──findByUsername(u)──▶  UserRepository  ──SELECT──▶  PostgreSQL\nUserService  ──BCrypt.matches(raw, hash)──▶  PasswordEncoder\nUserService  ◀──true──  AuthController\nAuthController  ──generate(user)──▶  JwtService  [PLANNED]\nAuthController  ──▶ Client  : 200  AuthResponse { token: \"<JWT>\", user }\n\n  ── eski (silinecek) ──\n  AuthController.login eski:  session.setAttribute(\"userId\", ..) + SecurityContextHolder manuel set\n  Faz 3A ile bu satırlar kalkar.\n\n──────────────────────────────────────  3) /me  WITH BEARER TOKEN (Faz 3A)  ──────────────────────────────────────\nClient  ──GET /api/auth/me  Authorization: Bearer <token>──▶  JwtAuthenticationFilter\nJwtAuthenticationFilter  ──verify(token)──▶  JwtService\nJwtAuthenticationFilter  ──set(Authentication)──▶  SecurityContextHolder\nJwtAuthenticationFilter  ──chain.doFilter──▶  AuthController.getCurrentUser()\nAuthController  ──findByUsername(principal)──▶  UserService  ──▶  UserRepository  ──▶  PostgreSQL\nAuthController  ──▶ Client  : 200  UserResponse { id, username, email, role, createdAt }\n\n──────────────────────────────────────  4) FAILURE MODES  ──────────────────────────────────────\n· Register, kullanıcı/email mevcut       →  RuntimeException  →  GlobalExceptionHandler  →  500 ErrorResponse   (Faz 2D: 409 Conflict)\n· Login yanlış parola                    →  AuthResponse {success=false}  (eski) →  400 ErrorResponse (Faz 3A)\n· /me token yok/expired                  →  Filter: 401  ErrorResponse\n· @Valid hata                            →  400  ErrorResponse + fieldErrors[]  (Faz 2D)",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    },
+
+    {
+      "type": "text", "id": "f-title", "x": 1740, "y": 1810, "width": 600, "height": 30,
+      "angle": 0, "strokeColor": "#1971c2", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 52, "version": 1, "versionNonce": 1052, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 22, "fontFamily": 1, "text": "[F]  Legend & Faz Progress",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "[F]  Legend & Faz Progress",
+      "autoResize": true, "lineHeight": 1.25, "baseline": 20
+    },
+    {
+      "type": "rectangle", "id": "f-box", "x": 1740, "y": 1850, "width": 800, "height": 700,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "#f8f9fa",
+      "fillStyle": "solid", "strokeWidth": 2, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": {"type": 3},
+      "seed": 53, "version": 1, "versionNonce": 1053, "isDeleted": false,
+      "boundElements": [], "updated": 1735000000000, "link": null, "locked": false
+    },
+    {
+      "type": "text", "id": "f-text", "x": 1760, "y": 1865, "width": 760, "height": 670,
+      "angle": 0, "strokeColor": "#1e1e1e", "backgroundColor": "transparent",
+      "fillStyle": "solid", "strokeWidth": 1, "strokeStyle": "solid", "roughness": 1,
+      "opacity": 100, "groupIds": [], "frameId": null, "roundness": null,
+      "seed": 54, "version": 1, "versionNonce": 1054, "isDeleted": false,
+      "boundElements": null, "updated": 1735000000000, "link": null, "locked": false,
+      "fontSize": 14, "fontFamily": 3, "text": "LEGEND\n──────────────────────\n  ▭ solid border + dolu renk\n     mevcut, kalacak\n  ▭ dashed border\n     planlanan / refaktör sonrası\n  × kırmızı + 60% opacity\n     silindi\n  🟢 / 🟡\n     faz durumu (done / pending)\n\nRENK PALETİ\n──────────────────────\n  sarı   #ffec99   Controller\n  turuncu#ffd8a8   DTO (planned)\n  yeşil  #b2f2bb   Service\n  mor    #d0bfff   Repository\n  gri    #ced4da   Entity\n  mavi   #a5d8ff   Config\n  pembe  #ffc9c9   External\n  k.mavi #74c0fc   Frontend\n\nFAZ PROGRESS (TaskList)\n──────────────────────\n🟢 Faz 0  Eski FE silindi\n🟢 Faz 1A SetupController kaldırıldı\n🟡 Faz 1B AdminController gerçek veri\n🟡 Faz 1C Security JWT + role-based\n🟢 Faz 1D .gitignore + temizlik\n🟡 Faz 2A Book ctrl'leri birleştir\n🟡 Faz 2B updateBook tüm alanlar\n🟡 Faz 2C DTO katmanı\n🟡 Faz 2D Validation + @Valid\n🟡 Faz 2E CORS (Flutter origin)\n🟡 Faz 2F Actuator / health check\n🟡 Faz 3A AuthController JWT\n🟡 Faz 3B Properties konsolide\n🟢 Faz 3C Script/dökümaн temizliği\n🟡 Faz 3D Test kapsamı\n🟡 Faz 4A Flutter projesi kurulum\n🟡 Faz 4B API client + JWT storage\n🟡 Faz 4C Auth ekranları\n🟡 Faz 4D Kitap ekranları\n🟡 Faz 4E Admin paneli\n🟡 Faz 4F Tema + responsive",
+      "textAlign": "left", "verticalAlign": "top", "containerId": null,
+      "originalText": "LEGEND\n──────────────────────\n  ▭ solid border + dolu renk\n     mevcut, kalacak\n  ▭ dashed border\n     planlanan / refaktör sonrası\n  × kırmızı + 60% opacity\n     silindi\n  🟢 / 🟡\n     faz durumu (done / pending)\n\nRENK PALETİ\n──────────────────────\n  sarı   #ffec99   Controller\n  turuncu#ffd8a8   DTO (planned)\n  yeşil  #b2f2bb   Service\n  mor    #d0bfff   Repository\n  gri    #ced4da   Entity\n  mavi   #a5d8ff   Config\n  pembe  #ffc9c9   External\n  k.mavi #74c0fc   Frontend\n\nFAZ PROGRESS (TaskList)\n──────────────────────\n🟢 Faz 0  Eski FE silindi\n🟢 Faz 1A SetupController kaldırıldı\n🟡 Faz 1B AdminController gerçek veri\n🟡 Faz 1C Security JWT + role-based\n🟢 Faz 1D .gitignore + temizlik\n🟡 Faz 2A Book ctrl'leri birleştir\n🟡 Faz 2B updateBook tüm alanlar\n🟡 Faz 2C DTO katmanı\n🟡 Faz 2D Validation + @Valid\n🟡 Faz 2E CORS (Flutter origin)\n🟡 Faz 2F Actuator / health check\n🟡 Faz 3A AuthController JWT\n🟡 Faz 3B Properties konsolide\n🟢 Faz 3C Script/dökümaн temizliği\n🟡 Faz 3D Test kapsamı\n🟡 Faz 4A Flutter projesi kurulum\n🟡 Faz 4B API client + JWT storage\n🟡 Faz 4C Auth ekranları\n🟡 Faz 4D Kitap ekranları\n🟡 Faz 4E Admin paneli\n🟡 Faz 4F Tema + responsive",
+      "autoResize": true, "lineHeight": 1.3, "baseline": 12
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff",
+    "gridSize": null
+  },
+  "files": {}
+}
