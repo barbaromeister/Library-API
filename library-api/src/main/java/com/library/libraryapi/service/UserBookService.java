@@ -1,125 +1,93 @@
 package com.library.libraryapi.service;
 
-import com.library.libraryapi.service.GoogleBooksService.BookSuggestion;
+import com.library.libraryapi.dto.search.GoogleBookResult;
+import com.library.libraryapi.exception.ResourceNotFoundException;
+import com.library.libraryapi.messages.GenericErrorMessages;
 import com.library.libraryapi.model.Book;
 import com.library.libraryapi.model.User;
 import com.library.libraryapi.repository.BookRepository;
 import com.library.libraryapi.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.Optional;
 
 @Service
 public class UserBookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+    private final UserRepository userRepository;
+    private final GoogleBooksService googleBooksService;
 
-    @Autowired
-    private UserRepository userRepository;
+    public UserBookService(BookRepository bookRepository,
+                           UserRepository userRepository,
+                           GoogleBooksService googleBooksService) {
+        this.bookRepository = bookRepository;
+        this.userRepository = userRepository;
+        this.googleBooksService = googleBooksService;
+    }
 
     @Transactional
-    public Book addBookToUserCollection(String username, BookSuggestion bookSuggestion) {
+    public Book addToUserCollection(String username, String googleBooksId) {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found: " + username));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format(GenericErrorMessages.USER_NOT_FOUND_EXCEPTION_MESSAGE, username)));
 
-        // Check if book already exists by Google Books ID or title+author
-        Book existingBook = null;
-        if (bookSuggestion.getGoogleId() != null) {
-            existingBook = bookRepository.findByGoogleBooksId(bookSuggestion.getGoogleId()).orElse(null);
-        }
-        
-        if (existingBook == null) {
-            existingBook = bookRepository.findByTitleAndAuthor(
-                bookSuggestion.getTitle(), bookSuggestion.getAuthors()).orElse(null);
-        }
+        Book book = bookRepository.findByGoogleBooksId(googleBooksId)
+                .orElseGet(() -> persistFromGoogle(googleBooksId));
 
-        Book book;
-        if (existingBook != null) {
-            book = existingBook;
-        } else {
-            // Create new book from BookSuggestion
-            book = createBookFromSuggestion(bookSuggestion);
-            book = bookRepository.save(book);
-        }
-
-        // Check if user already has this book
         if (!user.getBooks().contains(book)) {
             user.addBook(book);
             userRepository.save(user);
         }
-
         return book;
     }
 
-    private Book createBookFromSuggestion(BookSuggestion suggestion) {
+    private Book persistFromGoogle(String googleBooksId) {
+        GoogleBookResult result = googleBooksService.getByGoogleId(googleBooksId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format(GenericErrorMessages.GOOGLE_BOOK_NOT_FOUND_EXCEPTION_MESSAGE, googleBooksId)));
+
         Book book = new Book();
-        book.setTitle(suggestion.getTitle());
-        book.setAuthor(suggestion.getAuthors());
-        book.setGoogleBooksId(suggestion.getGoogleId());
-        book.setPublisher(suggestion.getPublisher());
-        book.setDescription(suggestion.getDescription());
-        book.setLanguage(suggestion.getLanguage());
+        book.setTitle(result.title());
+        book.setAuthor(result.authors());
+        book.setGoogleBooksId(result.googleId());
+        book.setPublisher(result.publisher());
+        book.setDescription(result.description());
+        book.setLanguage(result.language());
+        book.setIsbn(result.isbn13() != null ? result.isbn13() : result.isbn10());
+        book.setSmallThumbnail(result.smallThumbnail());
+        book.setThumbnail(result.thumbnail());
+        book.setMediumImage(result.mediumImage());
+        book.setLargeImage(result.largeImage());
 
-        // Set cover images
-        book.setSmallThumbnail(suggestion.getSmallThumbnail());
-        book.setThumbnail(suggestion.getThumbnail());
-        book.setMediumImage(suggestion.getMediumImage());
-
-        // Parse publish date
-        if (suggestion.getPublishedDate() != null && !suggestion.getPublishedDate().isEmpty()) {
+        if (result.publishedDate() != null && !result.publishedDate().isEmpty()) {
             try {
-                // Try different date formats
-                LocalDate publishDate = null;
-                String dateStr = suggestion.getPublishedDate();
-                
-                if (dateStr.length() == 4) { // Year only
+                String dateStr = result.publishedDate();
+                LocalDate publishDate;
+                if (dateStr.length() == 4) {
                     publishDate = LocalDate.of(Integer.parseInt(dateStr), 1, 1);
-                } else if (dateStr.length() == 7) { // YYYY-MM
+                } else if (dateStr.length() == 7) {
                     publishDate = LocalDate.parse(dateStr + "-01");
-                } else { // Full date
+                } else {
                     publishDate = LocalDate.parse(dateStr);
                 }
-                
                 book.setPublishDate(publishDate);
-            } catch (DateTimeParseException | NumberFormatException e) {
-                // Ignore invalid dates
+            } catch (DateTimeParseException | NumberFormatException ignored) {
             }
         }
-
-        // Set page count
-        if (suggestion.getPageCount() != null && suggestion.getPageCount() > 0) {
-            book.setPageCount(suggestion.getPageCount());
+        if (result.pageCount() != null && result.pageCount() > 0) {
+            book.setPageCount(result.pageCount());
         }
 
-        return book;
+        return bookRepository.save(book);
     }
 
     @Transactional(readOnly = true)
-    public boolean isBookInUserCollection(String username, String googleBooksId) {
-        Optional<User> userOpt = userRepository.findByUsername(username);
-        if (!userOpt.isPresent()) {
-            return false;
-        }
-
-        User user = userOpt.get();
-        return user.getBooks().stream()
-                .anyMatch(book -> googleBooksId.equals(book.getGoogleBooksId()));
-    }
-
-    @Transactional
-    public void removeBookFromUserCollection(String username, Long bookId) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found: " + username));
-
-        Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new RuntimeException("Book not found: " + bookId));
-
-        user.removeBook(book);
-        userRepository.save(user);
+    public boolean isInUserCollection(String username, String googleBooksId) {
+        return userRepository.findByUsername(username)
+                .map(u -> u.getBooks().stream().anyMatch(b -> googleBooksId.equals(b.getGoogleBooksId())))
+                .orElse(false);
     }
 }

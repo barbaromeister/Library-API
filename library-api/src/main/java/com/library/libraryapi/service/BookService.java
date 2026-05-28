@@ -1,23 +1,36 @@
 package com.library.libraryapi.service;
 
-import com.library.libraryapi.model.Book;
+import com.library.libraryapi.dto.book.BookRequest;
+import com.library.libraryapi.dto.book.BookResponse;
+import com.library.libraryapi.dto.search.CollectionCheckResponse;
+import com.library.libraryapi.dto.search.GoogleBookResult;
+import com.library.libraryapi.dto.search.SearchResponse;
+
 import java.util.List;
 
 public interface BookService {
 
-    List<Book> getAllBooks();
+    List<BookResponse> getAllBooks();
 
-    Book getBookById(Long id);
+    BookResponse getBookById(Long id);
 
-    Book createBook(Book book);
+    BookResponse createBook(BookRequest request);
 
-    Book updateBook(Long id, Book bookDetails);
+    BookResponse updateBook(Long id, BookRequest request);
 
     void deleteBook(Long id);
 
-    List<Book> findBooksByAuthor(String author);
+    List<BookResponse> findBooksByAuthor(String author);
 
-    List<Book> findBooksByTitle(String title);
+    List<BookResponse> findBooksByTitle(String title);
 
-    Book findBookByIsbn(String isbn);
+    BookResponse findBookByIsbn(String isbn);
+
+    SearchResponse googleSearch(String query, int maxResults);
+
+    List<GoogleBookResult> googleSuggest(String query, int limit);
+
+    BookResponse addToUserCollection(String username, String googleBooksId);
+
+    CollectionCheckResponse checkInUserCollection(String username, String googleBooksId);
 }

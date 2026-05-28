@@ -18,4 +18,14 @@ public final class GenericErrorMessages {
     public static final String PAGE_COUNT_MIN_VALIDATION_MESSAGE = "Page count must be at least 1";
 
     public static final String GOOGLE_BOOKS_ID_REQUIRED_VALIDATION_MESSAGE = "googleBooksId is required";
+
+    public static final String BOOK_NOT_FOUND_BY_ID_EXCEPTION_MESSAGE = "Book not found with id: %d";
+    public static final String BOOK_NOT_FOUND_BY_ISBN_EXCEPTION_MESSAGE = "Book not found with ISBN: %s";
+    public static final String USERNAME_ALREADY_EXISTS_EXCEPTION_MESSAGE = "Username already exists";
+    public static final String EMAIL_ALREADY_EXISTS_EXCEPTION_MESSAGE = "Email already exists";
+    public static final String INVALID_CREDENTIALS_EXCEPTION_MESSAGE = "Invalid username or password";
+    public static final String USER_NOT_FOUND_EXCEPTION_MESSAGE = "User not found: %s";
+    public static final String GOOGLE_BOOK_NOT_FOUND_EXCEPTION_MESSAGE = "Google Book not found with id: %s";
+    public static final String ACCESS_DENIED_EXCEPTION_MESSAGE = "Access denied";
+    public static final String VALIDATION_FAILED_EXCEPTION_MESSAGE = "Validation failed";
 }
