@@ -1,22 +1,42 @@
-FROM eclipse-temurin:21-jdk AS build
+# Build stage
+FROM eclipse-temurin:21-jdk-alpine AS build
 
 WORKDIR /app
 
 # Install Maven
-RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache maven
 
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+# Copy Maven wrapper and properties first
+COPY .mvn/ .mvn/
+COPY mvnw pom.xml ./
+RUN chmod +x mvnw
 
+# Download dependencies (this will be cached unless pom.xml changes)
+RUN ./mvnw dependency:go-offline -B
+
+# Copy source code and build
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN ./mvnw clean package -DskipTests -B
 
-FROM eclipse-temurin:21-jre
+# Runtime stage
+FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
-COPY --from=build /app/target/library-api-0.0.1-SNAPSHOT.jar app.jar
+# Create non-root user for security
+RUN addgroup -g 1001 -S appgroup && \
+    adduser -u 1001 -S appuser -G appgroup
+
+# Copy the built jar from build stage
+COPY --from=build --chown=appuser:appgroup /app/target/library-api-*.jar app.jar
+
+# Switch to non-root user
+USER appuser
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "app.jar"]
+# Add health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
+
+CMD ["java", "-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=75.0", "-jar", "app.jar"]

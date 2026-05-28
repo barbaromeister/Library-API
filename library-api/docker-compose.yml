@@ -1,8 +1,6 @@
-version: '3.8'
-
 services:
   postgres:
-    image: postgres:15
+    image: postgres:15-alpine
     container_name: library-postgres
     environment:
       POSTGRES_DB: kutuphane
@@ -14,23 +12,40 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - library-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d kutuphane"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
 
   library-api:
     build: .
     container_name: library-api
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/kutuphane
       SPRING_DATASOURCE_USERNAME: admin
       SPRING_DATASOURCE_PASSWORD: 123456
+      SPRING_PROFILES_ACTIVE: docker
     ports:
-      - "3000:8080"
+      - "8080:8080"
     networks:
       - library-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
 
 volumes:
   postgres_data:
+    driver: local
 
 networks:
   library-network:
