@@ -1,0 +1,38 @@
+name: library_flutter
+description: "Library Management — Flutter frontend for the Library API."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # HTTP
+  dio: ^5.7.0
+
+  # Routing
+  go_router: ^14.6.2
+
+  # Secure storage (JWT)
+  flutter_secure_storage: ^9.2.2
+
+  # Date/time formatting
+  intl: ^0.20.1
+
+  # Cached network images (book covers)
+  cached_network_image: ^3.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

@@ -1,0 +1,354 @@
+{
+  "info": {
+    "_postman_id": "library-api-collection-2026",
+    "name": "Library API",
+    "description": "Library Management API with JWT auth.\n\n**Setup:**\n1. Set `baseUrl` collection variable (default `http://localhost:8080`).\n2. Run **Auth → Register** or **Auth → Login** — the response's `token` is auto-saved to `{{token}}` variable.\n3. Protected requests automatically use `Authorization: Bearer {{token}}`.\n\n**Roles:**\n- USER → can create/update books, manage own collection, view profile\n- ADMIN → above + delete books + view user list",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const json = pm.response.json();",
+                  "  pm.collectionVariables.set('token', json.token);",
+                  "  console.log('Token saved:', json.token.substring(0, 20) + '...');",
+                  "  pm.test('Token returned', () => pm.expect(json.token).to.be.a('string'));",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"kaan\",\n  \"email\": \"kaan@test.com\",\n  \"password\": \"secret123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  pm.collectionVariables.set('token', json.token);",
+                  "  console.log('Token saved:', json.token.substring(0, 20) + '...');",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"kaan\",\n  \"password\": \"secret123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Me (current user)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "me"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books - CRUD",
+      "item": [
+        {
+          "name": "List all books",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books"]
+            }
+          }
+        },
+        {
+          "name": "Get book by id",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create book",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Clean Code\",\n  \"author\": \"Robert C. Martin\",\n  \"isbn\": \"9780132350884\",\n  \"publishDate\": \"2008-08-01\",\n  \"pageCount\": 464,\n  \"publisher\": \"Prentice Hall\",\n  \"language\": \"en\",\n  \"description\": \"A handbook of agile software craftsmanship.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books"]
+            }
+          }
+        },
+        {
+          "name": "Update book",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Clean Code (2nd Edition)\",\n  \"author\": \"Robert C. Martin\",\n  \"isbn\": \"9780132350884\",\n  \"publishDate\": \"2008-08-01\",\n  \"pageCount\": 500,\n  \"publisher\": \"Prentice Hall\",\n  \"language\": \"en\",\n  \"description\": \"Updated edition.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete book (ADMIN)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books - DB Search",
+      "item": [
+        {
+          "name": "Search by author",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/search/author?author=Martin",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "search", "author"],
+              "query": [{ "key": "author", "value": "Martin" }]
+            }
+          }
+        },
+        {
+          "name": "Search by title",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/search/title?title=Clean",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "search", "title"],
+              "query": [{ "key": "title", "value": "Clean" }]
+            }
+          }
+        },
+        {
+          "name": "Search by ISBN",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/search/isbn?isbn=9780132350884",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "search", "isbn"],
+              "query": [{ "key": "isbn", "value": "9780132350884" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books - Google Integration",
+      "item": [
+        {
+          "name": "Google search",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/google-search?query=harry potter&maxResults=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "google-search"],
+              "query": [
+                { "key": "query", "value": "harry potter" },
+                { "key": "maxResults", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Google suggest (lightweight)",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/google-suggest?query=clean code&limit=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "google-suggest"],
+              "query": [
+                { "key": "query", "value": "clean code" },
+                { "key": "limit", "value": "5" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add to my collection",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"googleBooksId\": \"PASTE_GOOGLE_ID_FROM_SEARCH_RESULT_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/books/collection",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "collection"]
+            },
+            "description": "Run **Google search** first, copy a `googleId` from the response, paste it into the body's `googleBooksId` field."
+          }
+        },
+        {
+          "name": "Check in my collection",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/books/collection/check?googleBooksId=PASTE_GOOGLE_ID_HERE",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "books", "collection", "check"],
+              "query": [
+                { "key": "googleBooksId", "value": "PASTE_GOOGLE_ID_HERE" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "List all users (ADMIN)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "users"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Actuator health",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["actuator", "health"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

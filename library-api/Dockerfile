@@ -12,11 +12,11 @@ COPY mvnw pom.xml ./
 RUN chmod +x mvnw
 
 # Download dependencies (this will be cached unless pom.xml changes)
-RUN ./mvnw dependency:go-offline -B
+RUN mvn dependency:go-offline -B
 
 # Copy source code and build
 COPY src ./src
-RUN ./mvnw clean package -DskipTests -B
+RUN mvn clean package -DskipTests -B
 
 # Runtime stage
 FROM eclipse-temurin:21-jre-alpine
